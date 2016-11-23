@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ssh -i ~/.ec2/sg-ec2-vagrant.pem ubuntu@notify.parker.sg
