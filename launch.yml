@@ -17,7 +17,7 @@
           aws_access_key: "{{ access_key_id }}"
           region: "{{ region }}"
           filters:
-            "tag:Name": ec2-go
+            "tag:Name": go-IPN_Listener
         register: ec2_facts
 
       - name: Launch new EC2 Instance if none running
@@ -31,8 +31,8 @@
           region: "{{ region }}"
           keypair: "{{ keypair }}"
           exact_count: "{{ params['exact_count'] }}"
-          instance_tags: '{"Name": "ec2-go"}'
-          count_tag: '{"Name": "ec2-go"}'
+          instance_tags: '{"Name": "go-IPN_Listener"}'
+          count_tag: '{"Name": "go-IPN_Listener"}'
           wait: true
         register: ec2_result
         notify:

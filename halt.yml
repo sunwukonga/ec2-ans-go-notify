@@ -1,14 +1,14 @@
 ---
-  - name: Halt EC2-go Instance
+  - name: Halt go-IPN_Listener Instance
     hosts: local
     connection: local
     gather_facts: False
     tags: halting
 
-    # Task that will be used to Halt the EC2-go Instance
+    # Task that will be used to Halt the go-IPN_Listener Instance
     tasks:
 
-      - name: Halt the EC2-go Instance
+      - name: Halt the go-IPN_Listener Instance
         local_action:
           module: ec2
           aws_access_key: "{{ access_key_id }}"
@@ -18,8 +18,8 @@
           image: "{{ image }}"
           region: "{{ region }}"
           keypair: "{{ keypair }}"
-          instance_tags: '{"Name": "ec2-go"}'
-          count_tag: '{"Name": "ec2-go"}'
+          instance_tags: '{"Name": "go-IPN_Listener"}'
+          count_tag: '{"Name": "go-IPN_Listener"}'
           state: stopped
         register: ec2
 

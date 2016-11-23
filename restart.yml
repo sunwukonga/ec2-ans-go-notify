@@ -1,5 +1,5 @@
 ---
-  - name: Restart the EC2-go Instance
+  - name: Restart the go-IPN_Listener Instance
     hosts: local
     connection: local
     gather_facts: False
@@ -13,10 +13,10 @@
           aws_access_key: "{{ access_key_id }}"
           region: "{{ region }}"
           filters:
-            "tag:Name": ec2-go
+            "tag:Name": go-IPN_Listener
         register: ec2_facts
 
-      - name: Restart stopped EC2-go Instance
+      - name: Restart stopped go-IPN_Listener Instance
         local_action:
           module: ec2
           aws_access_key: "{{ access_key_id }}"
@@ -28,7 +28,7 @@
           wait: true
         register: ec2_result
         notify:
-          - Add the newly created EC2-go instance to the ec2 host group
+          - Add the newly created go-IPN_Listener instance to the ec2 host group
           - Wait for SSH to come up
         with_together:
           - "{{ [0] | map('extract', (ec2_facts.instances | default([{'state': 'undefined'}], true)), 'state') | list }}"
@@ -37,7 +37,7 @@
 
     handlers:
 
-      - name: Add the newly created EC2-go instance to the ec2 host group
+      - name: Add the newly created go-IPN_Listener instance to the ec2 host group
         local_action: lineinfile
           dest="./hosts.ini"
           regexp="{{ item.public_ip }}"

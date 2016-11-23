@@ -1,18 +1,18 @@
 ---
-  - name: Destroy EC2-go Instance
+  - name: Destroy go-IPN_Listener Instance
     hosts: local
     connection: local
     gather_facts: False
     tags: destroying
 
-    # Necessary Variables for destroying the EC2-go Instance
+    # Necessary Variables for destroying the go-IPN_Listener Instance
     vars:
       params:
         exact_count:      0
 
     tasks:
 
-      - name: Destroy the EC2-go Instance
+      - name: Destroy the go-IPN_Listener Instance
         local_action:
           module: ec2
           aws_access_key: "{{ access_key_id }}"
@@ -23,8 +23,8 @@
           region: "{{ region }}"
           keypair: "{{ keypair }}"
           exact_count: "{{ params['exact_count'] }}"
-          instance_tags: '{"Name": "ec2-go"}'
-          count_tag: '{"Name": "ec2-go"}'
+          instance_tags: '{"Name": "go-IPN_Listener"}'
+          count_tag: '{"Name": "go-IPN_Listener"}'
         register: ec2
 
       - name: Remove this host from the ec2 host group in ./hosts.ini
