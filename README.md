@@ -1,5 +1,7 @@
 This README is out of date. The original repository that this was copied from was sunwukonga/qor-ec2-ansible and the details below remain consistent with that repository, not this one. 
 
+Creating and applying an Elastic IP to a halted instance is not problematic. 
+
 Ansible spin up of AWS/EC2 instance with go environment, qor installed.   
 The playbook.yml file and much of the roles/ directory originally came from https://github.com/samuell/devbox-golang.git
 ###############################################################################
